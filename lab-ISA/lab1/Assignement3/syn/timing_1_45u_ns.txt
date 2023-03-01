@@ -1,0 +1,89 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : myfilter
+Version: S-2021.06-SP4
+Date   : Tue Nov 15 11:37:42 2022
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: B8_r/Q_reg[3]
+              (rising edge-triggered flip-flop clocked by MY_CLK)
+  Endpoint: reg_mul_3k2_j_8/Q_reg[8]
+            (rising edge-triggered flip-flop clocked by MY_CLK)
+  Path Group: MY_CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  myfilter           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MY_CLK (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  B8_r/Q_reg[3]/CK (DFFR_X1)                              0.00       0.00 r
+  B8_r/Q_reg[3]/Q (DFFR_X1)                               0.12       0.12 r
+  B8_r/Q[3] (reg_35)                                      0.00       0.12 r
+  mult_227/a[3] (myfilter_DW_mult_tc_17)                  0.00       0.12 r
+  mult_227/U277/Z (BUF_X1)                                0.05       0.17 r
+  mult_227/U236/Z (CLKBUF_X3)                             0.05       0.22 r
+  mult_227/U260/ZN (XNOR2_X1)                             0.07       0.29 r
+  mult_227/U413/ZN (OAI22_X1)                             0.04       0.33 f
+  mult_227/U56/S (HA_X1)                                  0.08       0.41 f
+  mult_227/U364/ZN (INV_X1)                               0.03       0.44 r
+  mult_227/U380/ZN (OAI222_X1)                            0.05       0.49 f
+  mult_227/U343/ZN (NAND2_X1)                             0.03       0.52 r
+  mult_227/U345/ZN (AND3_X1)                              0.05       0.57 r
+  mult_227/U340/ZN (OR2_X1)                               0.04       0.60 r
+  mult_227/U289/ZN (AND3_X1)                              0.05       0.65 r
+  mult_227/U334/ZN (OAI222_X1)                            0.04       0.70 f
+  mult_227/U301/ZN (INV_X1)                               0.03       0.73 r
+  mult_227/U302/ZN (OAI222_X1)                            0.05       0.79 f
+  mult_227/U292/ZN (NAND2_X1)                             0.04       0.82 r
+  mult_227/U250/ZN (AND3_X1)                              0.05       0.88 r
+  mult_227/U325/ZN (OAI222_X1)                            0.04       0.92 f
+  mult_227/U335/ZN (INV_X1)                               0.03       0.96 r
+  mult_227/U336/ZN (OAI222_X1)                            0.06       1.01 f
+  mult_227/U306/ZN (NAND2_X1)                             0.04       1.05 r
+  mult_227/U308/ZN (NAND3_X1)                             0.04       1.09 f
+  mult_227/U313/ZN (NAND2_X1)                             0.03       1.13 r
+  mult_227/U314/ZN (NAND3_X1)                             0.04       1.16 f
+  mult_227/U7/CO (FA_X1)                                  0.10       1.26 f
+  mult_227/U322/ZN (NAND2_X1)                             0.04       1.30 r
+  mult_227/U324/ZN (NAND3_X1)                             0.04       1.34 f
+  mult_227/U368/ZN (NAND2_X1)                             0.04       1.37 r
+  mult_227/U298/ZN (NAND3_X1)                             0.04       1.41 f
+  mult_227/U375/ZN (NAND2_X1)                             0.04       1.45 r
+  mult_227/U376/ZN (NAND3_X1)                             0.04       1.49 f
+  mult_227/U327/ZN (NAND2_X1)                             0.04       1.52 r
+  mult_227/U295/ZN (NAND3_X1)                             0.04       1.56 f
+  mult_227/U332/ZN (NAND2_X1)                             0.03       1.59 r
+  mult_227/U285/ZN (AND3_X2)                              0.05       1.64 r
+  mult_227/product[19] (myfilter_DW_mult_tc_17)           0.00       1.64 r
+  reg_mul_3k2_j_8/I[8] (reg_6)                            0.00       1.64 r
+  reg_mul_3k2_j_8/U26/ZN (NAND2_X1)                       0.03       1.67 f
+  reg_mul_3k2_j_8/U3/ZN (NAND2_X1)                        0.03       1.70 r
+  reg_mul_3k2_j_8/Q_reg[8]/D (DFFR_X1)                    0.01       1.71 r
+  data arrival time                                                  1.71
+
+  clock MY_CLK (rise edge)                                1.45       1.45
+  clock network delay (ideal)                             0.00       1.45
+  clock uncertainty                                      -0.07       1.38
+  reg_mul_3k2_j_8/Q_reg[8]/CK (DFFR_X1)                   0.00       1.38 r
+  library setup time                                     -0.03       1.35
+  data required time                                                 1.35
+  --------------------------------------------------------------------------
+  data required time                                                 1.35
+  data arrival time                                                 -1.71
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.36
+
+
+1

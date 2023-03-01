@@ -1,0 +1,237 @@
+# //  Questa Sim-64
+# //  Version 2020.4 linux_x86_64 Oct 13 2020
+# //
+# //  Copyright 1991-2020 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+vlog -work ./work fpnew_pkg.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 12:41:37 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work fpnew_pkg.sv 
+# -- Compiling package fpnew_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 12:41:37 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -work ./work half_adder.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 13:35:19 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work half_adder.sv 
+# -- Compiling module half_adder
+# 
+# Top level modules:
+# 	half_adder
+# End time: 13:35:19 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -work ./work full_adder.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 13:35:26 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work full_adder.sv 
+# -- Compiling module full_adder
+# 
+# Top level modules:
+# 	full_adder
+# End time: 13:35:26 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -work ./work compressor_4_2.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 13:35:32 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work compressor_4_2.sv 
+# -- Compiling module full_adder
+# -- Compiling module compressor_4_2
+# 
+# Top level modules:
+# 	compressor_4_2
+# End time: 13:35:32 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -work ./work BOOTH_MUL.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 13:35:39 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work BOOTH_MUL.sv 
+# -- Compiling module full_adder
+# -- Compiling module half_adder
+# -- Compiling module full_adder
+# ** Warning: ** while parsing file included at BOOTH_MUL.sv(4)
+# ** while parsing file included at compressor_4_2.sv(1)
+# ** at full_adder.sv(1): (vlog-2275) Existing module 'full_adder' at line 1 will be overwritten.
+# -- Compiling module compressor_4_2
+# -- Compiling module multiplier
+# -- Importing package fpnew_pkg
+# ** Error: (vlog-13069) BOOTH_MUL.sv(278): near "end": syntax error, unexpected end.
+# End time: 13:35:39 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 1
+# /eda/mentor/2020-21/RHELx86/QUESTA-CORE-PRIME_2020.4/questasim/linux_x86_64/vlog failed.
+vlog -work ./work BOOTH_MUL.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 13:36:00 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work BOOTH_MUL.sv 
+# -- Compiling module full_adder
+# -- Compiling module half_adder
+# -- Compiling module full_adder
+# ** Warning: ** while parsing file included at BOOTH_MUL.sv(4)
+# ** while parsing file included at compressor_4_2.sv(1)
+# ** at full_adder.sv(1): (vlog-2275) Existing module 'full_adder' at line 1 will be overwritten.
+# -- Compiling module compressor_4_2
+# -- Compiling module multiplier
+# -- Importing package fpnew_pkg
+# 
+# Top level modules:
+# 	multiplier
+# End time: 13:36:00 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+vlog -work ./work BOOTH_MUL.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 14:09:31 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work BOOTH_MUL.sv 
+# -- Compiling module full_adder
+# -- Compiling module half_adder
+# -- Compiling module full_adder
+# ** Warning: ** while parsing file included at BOOTH_MUL.sv(4)
+# ** while parsing file included at compressor_4_2.sv(1)
+# ** at full_adder.sv(1): (vlog-2275) Existing module 'full_adder' at line 1 will be overwritten.
+# -- Compiling module compressor_4_2
+# -- Compiling module multiplier
+# -- Importing package fpnew_pkg
+# ** Error: (vlog-13069) BOOTH_MUL.sv(281): near "pp3": syntax error, unexpected IDENTIFIER.
+# End time: 14:09:31 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 1
+# /eda/mentor/2020-21/RHELx86/QUESTA-CORE-PRIME_2020.4/questasim/linux_x86_64/vlog failed.
+vlog -work ./work BOOTH_MUL.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 14:09:54 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work BOOTH_MUL.sv 
+# -- Compiling module full_adder
+# -- Compiling module half_adder
+# -- Compiling module full_adder
+# ** Warning: ** while parsing file included at BOOTH_MUL.sv(4)
+# ** while parsing file included at compressor_4_2.sv(1)
+# ** at full_adder.sv(1): (vlog-2275) Existing module 'full_adder' at line 1 will be overwritten.
+# -- Compiling module compressor_4_2
+# -- Compiling module multiplier
+# -- Importing package fpnew_pkg
+# ** Error: BOOTH_MUL.sv(280): (vlog-3373) Range of part-select [0:13] into 'pp_3_2' [42:0] is reversed.
+# ** Error: BOOTH_MUL.sv(280): (vlog-3373) Range of part-select [0:13] into 'pp2' [33:0] is reversed.
+# End time: 14:09:54 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 1
+# /eda/mentor/2020-21/RHELx86/QUESTA-CORE-PRIME_2020.4/questasim/linux_x86_64/vlog failed.
+vlog -work ./work BOOTH_MUL.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 14:10:19 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work BOOTH_MUL.sv 
+# -- Compiling module full_adder
+# -- Compiling module half_adder
+# -- Compiling module full_adder
+# ** Warning: ** while parsing file included at BOOTH_MUL.sv(4)
+# ** while parsing file included at compressor_4_2.sv(1)
+# ** at full_adder.sv(1): (vlog-2275) Existing module 'full_adder' at line 1 will be overwritten.
+# -- Compiling module compressor_4_2
+# -- Compiling module multiplier
+# -- Importing package fpnew_pkg
+# 
+# Top level modules:
+# 	multiplier
+# End time: 14:10:20 on Dec 12,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+vlog -work ./work BOOTH_MUL.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 14:31:03 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work BOOTH_MUL.sv 
+# -- Compiling module full_adder
+# -- Compiling module half_adder
+# -- Compiling module full_adder
+# ** Warning: ** while parsing file included at BOOTH_MUL.sv(4)
+# ** while parsing file included at compressor_4_2.sv(1)
+# ** at full_adder.sv(1): (vlog-2275) Existing module 'full_adder' at line 1 will be overwritten.
+# -- Compiling module compressor_4_2
+# -- Compiling module multiplier
+# -- Importing package fpnew_pkg
+# 
+# Top level modules:
+# 	multiplier
+# End time: 14:31:03 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+vlog -work ./work BOOTH_MUL.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 14:35:40 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work BOOTH_MUL.sv 
+# -- Compiling module full_adder
+# -- Compiling module half_adder
+# -- Compiling module full_adder
+# ** Warning: ** while parsing file included at BOOTH_MUL.sv(4)
+# ** while parsing file included at compressor_4_2.sv(1)
+# ** at full_adder.sv(1): (vlog-2275) Existing module 'full_adder' at line 1 will be overwritten.
+# -- Compiling module compressor_4_2
+# -- Compiling module multiplier
+# -- Importing package fpnew_pkg
+# 
+# Top level modules:
+# 	multiplier
+# End time: 14:35:40 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+vlog -work ./work BOOTH_MUL.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 14:46:58 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work BOOTH_MUL.sv 
+# -- Compiling module full_adder
+# -- Compiling module half_adder
+# -- Compiling module full_adder
+# ** Warning: ** while parsing file included at BOOTH_MUL.sv(4)
+# ** while parsing file included at compressor_4_2.sv(1)
+# ** at full_adder.sv(1): (vlog-2275) Existing module 'full_adder' at line 1 will be overwritten.
+# -- Compiling module compressor_4_2
+# -- Compiling module multiplier
+# -- Importing package fpnew_pkg
+# 
+# Top level modules:
+# 	multiplier
+# End time: 14:46:58 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+vlog -work ./work BOOTH_MUL.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 14:56:40 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work BOOTH_MUL.sv 
+# -- Compiling module full_adder
+# -- Compiling module half_adder
+# -- Compiling module full_adder
+# ** Warning: ** while parsing file included at BOOTH_MUL.sv(4)
+# ** while parsing file included at compressor_4_2.sv(1)
+# ** at full_adder.sv(1): (vlog-2275) Existing module 'full_adder' at line 1 will be overwritten.
+# -- Compiling module compressor_4_2
+# -- Compiling module multiplier
+# -- Importing package fpnew_pkg
+# 
+# Top level modules:
+# 	multiplier
+# End time: 14:56:40 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+vlog -work ./work fpnew_fma.sv
+# QuestaSim-64 vlog 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 14:56:49 on Dec 12,2022
+# vlog -reportprogress 300 -work ./work fpnew_fma.sv 
+# -- Compiling module full_adder
+# -- Compiling module half_adder
+# -- Compiling module full_adder
+# ** Warning: ** while parsing file included at fpnew_fma.sv(18)
+# ** while parsing file included at BOOTH_MUL.sv(4)
+# ** while parsing file included at compressor_4_2.sv(1)
+# ** at full_adder.sv(1): (vlog-2275) Existing module 'full_adder' at line 1 will be overwritten.
+# -- Compiling module compressor_4_2
+# -- Compiling module multiplier
+# -- Importing package fpnew_pkg
+# -- Compiling module fpnew_fma
+# ** Warning: fpnew_fma.sv(32): (vlog-13314) Defaulting port 'operands_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	multiplier
+# 	fpnew_fma
+# End time: 14:56:49 on Dec 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2

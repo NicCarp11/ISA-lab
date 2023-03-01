@@ -1,0 +1,319 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2020 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v20.11-s130_1, built Wed Aug 5 15:53:11 PDT 2020
+Options:	
+Date:		Fri Nov 11 14:02:20 2022
+Host:		isaserver (x86_64 w/Linux 3.10.0-1160.71.1.el7.x86_64) (1core*6cpus*Westmere E56xx/L56xx/X56xx (Nehalem-C) 4096KB)
+OS:		CentOS Linux release 7.9.2009 (Core)
+
+License:
+		invs	Innovus Implementation System	20.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (31 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+<CMD> win
+<CMD> encMessage warning 0
+Suppress "**WARN ..." messages.
+<CMD> encMessage debug 0
+<CMD> encMessage info 0
+my_rc
+Loading view definition file from /home/isa12_2022_2023/Desktop/lab1/innovus/myfir.dat/viewDefinition.tcl
+*** End library_loading (cpu=0.04min, real=0.05min, mem=14.0M, fe_cpu=1.53min, fe_real=5.10min, fe_mem=787.9M) ***
+*** Netlist is unique.
+Loading preference file /home/isa12_2022_2023/Desktop/lab1/innovus/myfir.dat/gui.pref.tcl ...
+**WARN: (IMPTCM-77):	Option "-drouteStartIteration" for command setNanoRouteMode is obsolete and will be removed in a future release. The obsolete option still works in this release but to avoid this warning and to ensure compatibility with future releases, remove the obsolete option from your script.
+Loading place ...
+'set_default_switching_activity' finished successfully.
+my_delay
+**WARN: (IMPESI-3505):	setDelayCalMode -eng_copyNetPropToNewNet true (default=false) will be obsoleted along with its sgs2set equivalent.  This parameter will continue to be supported in the current release, but will be removed in the next major release of the software.
+**WARN: (IMPCTE-107):	The following globals have been obsoleted since version 20.11-s130_1. They will be removed in the next release. 
+timing_enable_default_delay_arc
+my_rc
+<CMD> reset_parasitics
+Performing RC Extraction ...
+<CMD> extractRC
+**WARN: (IMPEXT-3518):	The lower process node is set (using command 'setDesignMode') but the technology file for TQuantus extraction not specified. Therefore, going for postRoute (effortLevel low) extraction instead of recommended extractor 'TQuantus' for lower nodes. Use command 'set_analysis_view/update_rc_corner' to specify the technology file for TQuantus extraction to take place.
+Extraction called for design 'myfir' of instances=8700 and nets=4407 using extraction engine 'postRoute' at effort level 'low' .
+PostRoute (effortLevel low) RC Extraction called for design myfir.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: my_rc
+extractDetailRC Option : -outfile /tmp/innovus_temp_12522_isaserver_isa12_2022_2023_txLZVF/myfir_12522_zzrpAK.rcdb.d  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1146.0M)
+Extracted 10.0035% (CPU Time= 0:00:00.4  MEM= 1236.1M)
+Extracted 20.0038% (CPU Time= 0:00:00.5  MEM= 1237.1M)
+Extracted 30.0041% (CPU Time= 0:00:00.5  MEM= 1237.1M)
+Extracted 40.0044% (CPU Time= 0:00:00.6  MEM= 1238.1M)
+Extracted 50.0048% (CPU Time= 0:00:00.6  MEM= 1239.1M)
+Extracted 60.0051% (CPU Time= 0:00:00.7  MEM= 1239.1M)
+Extracted 70.0054% (CPU Time= 0:00:00.7  MEM= 1240.1M)
+Extracted 80.0057% (CPU Time= 0:00:00.8  MEM= 1240.1M)
+Extracted 90.006% (CPU Time= 0:00:00.9  MEM= 1240.1M)
+Extracted 100% (CPU Time= 0:00:01.1  MEM= 1241.1M)
+Number of Extracted Resistors     : 53405
+Number of Extracted Ground Cap.   : 57697
+Number of Extracted Coupling Cap. : 118498
+Filtering XCap in 'relativeAndCoupling' mode using values coupling_c_threshold=0.1fF, relative_c_threshold=1, and total_c_threshold=0fF.
+ Corner: my_rc
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1225.1M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:02.0  Real Time: 0:00:02.0  MEM: 1225.082M)
+**ERROR: (IMPSYT-6000):	No Object Selected.
+<CMD> set_power_analysis_mode -reset
+<CMD> set_power_analysis_mode -method static -corner max -create_binary_db true -write_static_currents true -honor_negative_energy true -ignore_control_signals true
+<CMD> set_power_output_dir -reset
+<CMD> set_power_output_dir ./
+<CMD> set_default_switching_activity -reset
+<CMD> set_default_switching_activity -input_activity 0.2 -period 10.0
+** INFO:  (VOLTUS_POWR-3229): Using user defined default frequency 100MHz for power calculation.
+
+'set_default_switching_activity' finished successfully.
+<CMD> read_activity_file -reset
+<CMD> read_activity_file -format VCD -scope /tb_fir/UUT -start {} -end {} -block {} ../vcd/design.vcd
+
+Power Net Detected:
+        Voltage	    Name
+             0V	    VSS
+           1.1V	    VDD
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: myfir
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB 
+# Signoff Settings: SI On 
+#################################################################################
+             0V	    VSS
+           1.1V	    VDD
+MY_CLK(421.941MHz) Parsing VCD file ../vcd/design.vcd
+
+Starting Reading VCD variables
+2022-Nov-11 14:10:28 (2022-Nov-11 13:10:28 GMT)
+2022-Nov-11 14:10:28 (2022-Nov-11 13:10:28 GMT): 10%
+2022-Nov-11 14:10:28 (2022-Nov-11 13:10:28 GMT): 20%
+2022-Nov-11 14:10:28 (2022-Nov-11 13:10:28 GMT): 30%
+2022-Nov-11 14:10:28 (2022-Nov-11 13:10:28 GMT): 40%
+2022-Nov-11 14:10:28 (2022-Nov-11 13:10:28 GMT): 50%
+2022-Nov-11 14:10:28 (2022-Nov-11 13:10:28 GMT): 60%
+2022-Nov-11 14:10:28 (2022-Nov-11 13:10:28 GMT): 70%
+2022-Nov-11 14:10:28 (2022-Nov-11 13:10:28 GMT): 80%
+2022-Nov-11 14:10:28 (2022-Nov-11 13:10:28 GMT): 90%
+
+Finished Reading VCD variables
+2022-Nov-11 14:10:28 (2022-Nov-11 13:10:28 GMT)
+   
+The vcd command required:
+   		0.33 user, 0.03 system, and 0.37 real seconds
+
+   Total number of value changes: 680332.
+
+   Total simulation time: 3.253e-06s.
+
+** WARN:  (VOLTUS_POWR-1784): The SDC clock frequency 421.941MHz is being overwritten with the VCD clock frequency 125MHz for the clock 'MY_CLK' associated with the net
+'CLK' from the VCD file. If the SDC clock frequency is required for static power calculation, use the command
+'set_switching_activity -clock <clock name> -scale_factor <num>' to scale frequency of this clock.
+
+   With this vcd command,  322597 value changes and 3.253e-06 second
+simulation time were counted for power consumption calculation.
+
+  Filename (activity)                    : ../vcd/design.vcd
+  Names in file that matched to design   : 4401/4403
+  Annotation coverage for this file
+   (Unique nets matched/Total nets)       : 4401/4401 = 100%
+
+  2 nets were found in the VCD file(s) but were not in
+  the design.  These nets are not reported because
+  'set_power_analysis_mode' -report_missing_nets' is set to false
+(default).
+
+  Total annotation coverage for all files of type VCD: 4401/4401 = 100%
+  Percent of VCD annotated nets with zero toggles: 1380/4401 = 31.3565%
+
+'read_activity_file' finished successfully.
+<CMD> set_power -reset
+<CMD> set_powerup_analysis -reset
+<CMD> set_dynamic_power_simulation -reset
+<CMD> report_power -rail_analysis_format VS -outfile .//myfir.rpt
+Using Power View: MyAnView.
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: myfir
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB 
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Start delay calculation (fullDC) (1 T). (MEM=1257.08)
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Total number of fetched objects 4413
+AAE_INFO-618: Total number of nets in the design is 4407,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1268.29 CPU=0:00:03.9 REAL=0:00:04.0)
+End delay calculation (fullDC). (MEM=1241.21 CPU=0:00:04.6 REAL=0:00:05.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1241.2M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:00.0, MEM = 1241.2M)
+Starting SI iteration 2
+Start delay calculation (fullDC) (1 T). (MEM=1143.33)
+Glitch Analysis: View MyAnView -- Total Number of Nets Skipped = 0. 
+Glitch Analysis: View MyAnView -- Total Number of Nets Analyzed = 4413. 
+Total number of fetched objects 4413
+AAE_INFO-618: Total number of nets in the design is 4407,  0.1 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1184.48 CPU=0:00:00.1 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1184.48 CPU=0:00:00.1 REAL=0:00:00.0)
+
+Begin Power Analysis
+
+             0V	    VSS
+           1.1V	    VDD
+Begin Processing Timing Library for Power Calculation
+
+Begin Processing Timing Library for Power Calculation
+
+
+
+Begin Processing Power Net/Grid for Power Calculation
+
+Ended Processing Power Net/Grid for Power Calculation: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=910.17MB/2326.16MB/941.72MB)
+
+Begin Processing Timing Window Data for Power Calculation
+
+** WARN:  (VOLTUS_POWR-1608):   Found conflicting clock definitions for the same clock 'MY_CLK' in the SDC file.
+  Retaining the last specified frequency of 421.941MHz.
+
+Ended Processing Timing Window Data for Power Calculation: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=910.22MB/2326.16MB/941.72MB)
+
+Begin Processing User Attributes
+
+Ended Processing User Attributes: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=910.40MB/2326.16MB/941.72MB)
+
+Begin Processing Signal Activity
+
+
+Starting Levelizing
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT)
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 10%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 20%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 30%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 40%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 50%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 60%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 70%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 80%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 90%
+
+Finished Levelizing
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT)
+
+Starting Activity Propagation
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT)
+
+Finished Activity Propagation
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT)
+
+Activity annotation summary:
+        Primary Inputs : 123/123 = 100%
+          Flop outputs : 462/462 = 100%
+  Memory/Macro outputs : 0/0 = 0%
+      Tristate outputs : 0/0 = 0%
+            Total Nets : 4401/4401 = 100%
+
+Ended Processing Signal Activity: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=910.76MB/2326.16MB/941.72MB)
+
+Begin Power Computation
+
+      ----------------------------------------------------------
+      # of cell(s) missing both power/leakage table: 0
+      # of cell(s) missing power table: 0
+      # of cell(s) missing leakage table: 0
+      # of MSMV cell(s) missing power_level: 0
+      ----------------------------------------------------------
+
+
+
+Starting Calculating power
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT)
+ ... Calculating switching power
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 10%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 20%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 30%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 40%
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 50%
+ ... Calculating internal and leakage power
+2022-Nov-11 14:10:35 (2022-Nov-11 13:10:35 GMT): 60%
+2022-Nov-11 14:10:36 (2022-Nov-11 13:10:36 GMT): 70%
+2022-Nov-11 14:10:36 (2022-Nov-11 13:10:36 GMT): 80%
+2022-Nov-11 14:10:36 (2022-Nov-11 13:10:36 GMT): 90%
+
+Finished Calculating power
+2022-Nov-11 14:10:37 (2022-Nov-11 13:10:37 GMT)
+Ended Power Computation: (cpu=0:00:01, real=0:00:01, mem(process/total/peak)=911.24MB/2326.16MB/941.72MB)
+
+Begin Processing User Attributes
+
+Ended Processing User Attributes: (cpu=0:00:00, real=0:00:00, mem(process/total/peak)=911.24MB/2326.16MB/941.72MB)
+
+Ended Power Analysis: (cpu=0:00:02, real=0:00:02, mem(process/total/peak)=911.31MB/2326.16MB/941.72MB)
+
+Begin Boundary Leakage Calculation
+Ended Boundary Leakage Calculation: (cpu=0:00:00, real=0:00:00,
+mem(process/total/peak)=911.32MB/2326.16MB/941.72MB)
+Begin Static Power Report Generation
+*
+
+
+
+Total Power
+-----------------------------------------------------------------------------------------
+Total Internal Power:        0.45249315 	   51.3723%
+Total Switching Power:       0.29612302 	   33.6193%
+Total Leakage Power:         0.13219567 	   15.0084%
+Total Power:                 0.88081184
+-----------------------------------------------------------------------------------------
+Ended Static Power Report Generation: (cpu=0:00:00, real=0:00:00,
+mem(process/total/peak)=913.35MB/2326.16MB/941.72MB)
+
+Begin Creating Binary Database
+Ended Creating Binary Database: (cpu=0:00:01, real=0:00:01,
+mem(process/total/peak)=1428.28MB/3094.58MB/1428.29MB)
+
+Output file is .//myfir.rpt.
+<CMD> report_power -outfile report_power_afterplaceandroute -sort { total }
+Using Power View: MyAnView.
+Begin Boundary Leakage Calculation
+Ended Boundary Leakage Calculation: (cpu=0:00:00, real=0:00:00,
+mem(process/total/peak)=920.81MB/2301.46MB/1428.39MB)
+Begin Static Power Report Generation
+*
+
+
+
+Total Power
+-----------------------------------------------------------------------------------------
+Total Internal Power:        0.45249315 	   51.3723%
+Total Switching Power:       0.29612302 	   33.6193%
+Total Leakage Power:         0.13219567 	   15.0084%
+Total Power:                 0.88081184
+-----------------------------------------------------------------------------------------
+Ended Static Power Report Generation: (cpu=0:00:00, real=0:00:00,
+mem(process/total/peak)=920.88MB/2301.46MB/1428.39MB)
+
+
+Output file is .//report_power_afterplaceandroute.

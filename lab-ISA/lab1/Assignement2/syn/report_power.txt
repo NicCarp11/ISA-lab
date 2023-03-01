@@ -1,0 +1,56 @@
+Information: Updating design information... (UID-85)
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: The derived toggle rate value (0.210970) for the clock net 'CLK' conflicts with the annotated value (0.250000). Using the annotated value. (PWR-12)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : myfir
+Version: S-2021.06-SP4
+Date   : Thu Nov 10 19:11:06 2022
+****************************************
+
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /eda/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db)
+
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+myfir                  5K_hvratio_1_1    NangateOpenCellLibrary
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+  Cell Internal Power  = 440.7285 uW   (62%)
+  Net Switching Power  = 267.3328 uW   (38%)
+                         ---------
+Total Dynamic Power    = 708.0613 uW  (100%)
+
+Cell Leakage Power     = 139.0551 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register         199.6521           42.4313        2.0659e+04          262.7429  (  31.02%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational    241.0762          224.9012        1.1840e+05          584.3737  (  68.98%)
+--------------------------------------------------------------------------------------------------
+Total            440.7283 uW       267.3325 uW     1.3906e+05 nW       847.1165 uW
+1
