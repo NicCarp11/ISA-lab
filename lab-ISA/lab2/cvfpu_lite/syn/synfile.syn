@@ -1,0 +1,32 @@
+source .synopsys_dc.setup
+analyze -library WORK -format sverilog {../src/cf_math_pkg.sv ../src/lzc.sv ../src/rr_arb_tree.sv ../src/fpnew_pkg.sv ../src/fpnew_classifier.sv ../src/fpnew_rounding.sv ../src/fpnew_fma.sv ../src/fpnew_opgroup_fmt_slice.sv ../src/fpnew_opgroup_block.sv ../src/fpnew_top.sv}
+
+analyze -f vhdl -lib WORK ../tb/clk_gen.vhd
+analyze -f vhdl -lib WORK ../tb/data_gen.vhd
+analyze -library WORK -format sverilog ../tb/tb_fpnew_top_net.sv
+
+
+set power_preserve_rtl_hier_names true
+elaborate fpnew_top -library WORK > ./elaborate.txt
+uniquify
+link
+create_clock -name MY_CLK -period 1.81 clk_i
+set_dont_touch_network MY_CLK
+set_clock_uncertainty 0.07 [get_clocks MY_CLK]
+set_input_delay 0.5 -max -clock MY_CLK [remove_from_collection [all_inputs] CLK]
+set_output_delay 0.5 -max -clock MY_CLK [all_outputs]
+set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
+set_load $OLOAD [all_outputs]
+ungroup -all -flatten
+set_implementation DW02_mult/pparch [find cell *mult*]
+compile
+optimize_registers
+report_resources > rp_res_ppa.txt
+report_timing > timing_PPA_1_81_ns.txt
+report_area > area_PPA_1_81_ns.txt
+ungroup -all -flatten
+change_names -hierarchy -rules sverilog
+write_sdf ../netlist/fpnew_top.sdf
+write -f verilog -hierarchy -output ../netlist/fpnew_top.sv
+write_sdc ../netlist/fpnew_top.sdc
+quit

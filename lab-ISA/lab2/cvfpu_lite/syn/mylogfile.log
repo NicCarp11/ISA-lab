@@ -1,0 +1,729 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version S-2021.06-SP4 for linux64 - Nov 23, 2021 
+
+                    Copyright (c) 1988 - 2021 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+source .synopsys_dc.setup
+dw_foundation.sldb
+analyze -library WORK -format sverilog {../src/cf_math_pkg.sv ../src/lzc.sv ../src/rr_arb_tree.sv ../src/fpnew_pkg.sv ../src/fpnew_classifier.sv ../src/fpnew_rounding.sv ../src/fpnew_fma.sv ../src/fpnew_opgroup_fmt_slice.sv ../src/fpnew_opgroup_block.sv ../src/fpnew_top.sv}
+Running PRESTO HDLC
+Compiling source file ../src/cf_math_pkg.sv
+Compiling source file ../src/lzc.sv
+Compiling source file ../src/rr_arb_tree.sv
+Compiling source file ../src/fpnew_pkg.sv
+Compiling source file ../src/fpnew_classifier.sv
+Compiling source file ../src/fpnew_rounding.sv
+Compiling source file ../src/fpnew_fma.sv
+Opening include file ../src/registers.svh
+Compiling source file ../src/fpnew_opgroup_fmt_slice.sv
+Compiling source file ../src/fpnew_opgroup_block.sv
+Compiling source file ../src/fpnew_top.sv
+Presto compilation completed successfully.
+Loading db file '/eda/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db'
+Loading db file '/eda/synopsys/2021-22/RHELx86/SYN_2021.06-SP4/libraries/syn/dw_foundation.sldb'
+1
+analyze -f vhdl -lib WORK ../tb/clk_gen.vhd
+Running PRESTO HDLC
+Compiling Entity Declaration CLK_GEN
+Compiling Architecture BEH of CLK_GEN
+Presto compilation completed successfully.
+1
+analyze -f vhdl -lib WORK ../tb/data_gen.vhd
+Running PRESTO HDLC
+Compiling Entity Declaration DATA_GEN
+Compiling Architecture BEH of DATA_GEN
+Presto compilation completed successfully.
+1
+analyze -library WORK -format sverilog ../tb/tb_fpnew_top_net.sv
+Running PRESTO HDLC
+Compiling source file ../tb/tb_fpnew_top_net.sv
+Information:  ../tb/tb_fpnew_top_net.sv:1: List () of one, unnamed, port is ignored. (VER-988)
+Presto compilation completed successfully.
+1
+set power_preserve_rtl_hier_names true
+true
+elaborate fpnew_top -library WORK > ./elaborate.txt
+uniquify
+Information: Uniquified 2 instances of design 'lzc_00000004_0'. (OPT-1056)
+Information: Uniquified 8 instances of design 'lzc_00000005_0'. (OPT-1056)
+1
+link
+
+  Linking design 'fpnew_top'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (25 designs)              /home/isa12_2022_2023/Desktop/lab2/cvfpu_lite/syn/fpnew_top.db, etc
+  NangateOpenCellLibrary (library) /eda/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db
+  dw_foundation.sldb (library) /eda/synopsys/2021-22/RHELx86/SYN_2021.06-SP4/libraries/syn/dw_foundation.sldb
+
+1
+create_clock -name MY_CLK -period 1.81 clk_i
+1
+set_dont_touch_network MY_CLK
+1
+set_clock_uncertainty 0.07 [get_clocks MY_CLK]
+1
+set_input_delay 0.5 -max -clock MY_CLK [remove_from_collection [all_inputs] CLK]
+Warning: Nothing implicitly matched 'CLK' (SEL-003)
+1
+set_output_delay 0.5 -max -clock MY_CLK [all_outputs]
+1
+set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
+3.40189
+set_load $OLOAD [all_outputs]
+1
+ungroup -all -flatten
+Information: Updating graph... (UID-83)
+Warning: Design 'fpnew_top' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+1
+set_implementation DW02_mult/pparch [find cell *mult*]
+1
+compile
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | S-2021.06-DWBB_202106.4 |     *     |
+| Licensed DW Building Blocks        | S-2021.06-DWBB_202106.4 |     *     |
+============================================================================
+
+============================================================================
+| Flow Information                                                         |
+----------------------------------------------------------------------------
+| Flow         | Design Compiler                                           |
+============================================================================
+| Design Information                                      | Value          |
+============================================================================
+| Number of Scenarios                                     | 0              |
+| Leaf Cell Count                                         | 2597           |
+| Number of User Hierarchies                              | 0              |
+| Sequential Cell Count                                   | 324            |
+| Macro Count                                             | 0              |
+| Number of Power Domains                                 | 0              |
+| Design with UPF Data                                    | false          |
+============================================================================
+
+Information: There are 67 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'fpnew_top'
+Information: The register 'i_arbiter/gen_arbiter.rr_q_reg[1]' will be removed. (OPT-1207)
+Information: The register 'i_arbiter/gen_arbiter.rr_q_reg[0]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[3].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[2]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[3].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[1]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[3].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[0]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[2].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[2]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[2].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[1]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[2].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[0]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[1].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[2]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[1].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[1]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[1].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[0]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[2]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[1]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/i_arbiter/gen_arbiter.rr_q_reg[0]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_aux_q_reg[1]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/inp_pipe_aux_q_reg[1]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_aux_q_reg[1]' will be removed. (OPT-1207)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_stat_q_reg[1][DZ]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_stat_q_reg[1][OF]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_stat_q_reg[1][UF]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_stat_q_reg[1][NX]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][21]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][20]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][19]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][18]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][17]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][16]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][15]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][14]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][13]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][12]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][11]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][10]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][9]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][8]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][7]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][6]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][5]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][4]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][1]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_spec_res_q_reg[1][mantissa][0]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/inp_pipe_op_q_reg[1][2]' is a constant and will be removed. (OPT-1206)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/inp_pipe_op_q_reg[1][3]' is a constant and will be removed. (OPT-1206)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'fpnew_top_DW01_add_0'
+  Mapping 'fpnew_top_DW_cmp_0'
+  Processing 'fpnew_top_DW01_dec_0'
+  Processing 'fpnew_top_DW01_inc_0'
+  Mapping 'fpnew_top_DW_cmp_1'
+  Mapping 'DW_leftsh'
+Information: Added key list 'DesignWare' to design 'fpnew_top'. (DDB-72)
+  Processing 'fpnew_top_DW01_add_1'
+  Processing 'fpnew_top_DW01_add_2'
+  Mapping 'fpnew_top_DW_cmp_2'
+  Mapping 'fpnew_top_DW_cmp_3'
+  Mapping 'fpnew_top_DW_cmp_4'
+  Processing 'fpnew_top_DW01_sub_0'
+  Processing 'fpnew_top_DW01_add_3'
+  Mapping 'DW_rightsh'
+  Mapping 'fpnew_top_DW02_mult_0'
+  Processing 'fpnew_top_DW01_sub_1'
+  Mapping 'fpnew_top_DW_cmp_5'
+  Mapping 'fpnew_top_DW_cmp_6'
+  Mapping 'fpnew_top_DW_cmp_7'
+  Processing 'fpnew_top_DW01_sub_2'
+  Processing 'fpnew_top_DW01_add_4'
+  Building model 'DW01_NAND2'
+  Processing 'DW01_NAND2'
+  Building model 'DW01_add_width10' (rpl)
+  Processing 'DW01_add_width10'
+  Building model 'DW01_sub_width10' (rpl)
+  Processing 'DW01_sub_width10'
+  Building model 'DW01_sub_width11' (rpl)
+  Processing 'DW01_sub_width11'
+  Building model 'DW01_inc_width12' (rpl)
+  Processing 'DW01_inc_width12'
+  Building model 'DW01_inc_width10' (rpl)
+  Processing 'DW01_inc_width10'
+  Processing 'fpnew_top_DW01_add_5'
+  Processing 'fpnew_top_DW01_add_6'
+  Processing 'fpnew_top_DW01_sub_3'
+  Processing 'fpnew_top_DW01_inc_1'
+  Processing 'fpnew_top_DW01_sub_4'
+  Processing 'fpnew_top_DW01_inc_2'
+  Processing 'fpnew_top_DW01_sub_5'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+Information: The register 'gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][DZ]' is a constant and will be removed. (OPT-1206)
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:57   11889.9      1.47     189.1      12.0                          
+    0:00:58   11844.7      1.47     188.7      12.0                          
+    0:00:58   11844.7      1.47     188.7      12.0                          
+    0:00:58   11841.5      1.47     188.7      12.0                          
+    0:00:58   11841.5      1.47     188.7      12.0                          
+    0:01:02    8374.2      1.48     151.8       0.0                          
+    0:01:03    8329.3      1.48     152.3       0.0                          
+    0:01:04    8329.0      1.48     152.1       0.0                          
+    0:01:04    8329.8      1.48     150.9       0.0                          
+    0:01:04    8329.8      1.48     150.9       0.0                          
+    0:01:04    8329.8      1.48     150.9       0.0                          
+    0:01:04    8329.8      1.48     150.9       0.0                          
+    0:01:04    8329.8      1.48     150.9       0.0                          
+    0:01:05    8329.8      1.48     150.9       0.0                          
+    0:01:05    8329.8      1.48     150.9       0.0                          
+    0:01:05    8329.8      1.48     150.9       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:01:05    8329.8      1.48     150.9       0.0                          
+    0:01:05    8336.2      1.40     148.0       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][58]/D
+    0:01:05    8340.7      1.39     146.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][58]/D
+    0:01:06    8344.2      1.37     144.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:06    8346.5      1.36     143.3       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:07    8352.4      1.34     141.0       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][NX]/D
+    0:01:07    8358.8      1.33     140.3       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:08    8360.1      1.32     139.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:08    8371.0      1.31     137.7      28.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:09    8375.5      1.30     136.7      28.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:09    8378.7      1.29     136.2      28.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:10    8384.9      1.28     135.1      28.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:10    8395.2      1.28     134.2      28.1 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:11    8393.9      1.27     133.9      28.1 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:11    8394.4      1.27     133.3      28.1 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:11    8398.7      1.26     132.4      28.1 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:12    8402.1      1.25     131.8      28.1 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:13    8404.0      1.24     131.0      28.1 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:13    8408.0      1.24     130.1      28.1 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:14    8412.8      1.23     128.8      28.1 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:14    8413.8      1.22     127.6      28.1 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:14    8421.8      1.21     127.1      28.1 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:15    8430.9      1.20     126.0       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:15    8441.5      1.19     125.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:16    8446.3      1.19     125.5       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:16    8450.8      1.19     125.3       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:17    8459.9      1.18     124.5       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:17    8463.9      1.17     123.9       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:18    8468.4      1.17     123.5       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:18    8472.1      1.16     122.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:18    8473.4      1.15     122.0       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:19    8477.2      1.15     121.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:19    8481.9      1.14     121.1       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:20    8490.2      1.14     120.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:20    8496.3      1.13     119.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:21    8502.2      1.13     119.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:21    8507.7      1.12     119.3       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:21    8511.2      1.12     119.3       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][75]/D
+    0:01:22    8509.9      1.11     118.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:22    8512.5      1.11     118.1       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:22    8521.3      1.10     118.0       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:23    8528.5      1.10     117.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:23    8533.0      1.10     117.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:23    8539.1      1.10     117.4       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:24    8543.9      1.09     117.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:24    8548.2      1.09     116.9       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:24    8552.4      1.09     116.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:25    8556.4      1.09     116.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:25    8560.1      1.09     116.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:25    8562.5      1.09     116.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:26    8561.2      1.08     116.1       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][UF]/D
+    0:01:26    8564.9      1.08     115.3       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][UF]/D
+    0:01:27    8570.8      1.06     113.9       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:27    8576.1      1.06     113.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:27    8578.5      1.06     113.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:27    8579.6      1.06     113.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:28    8583.6      1.06     113.4       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:28    8589.9      1.05     112.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:28    8593.1      1.05     112.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:29    8596.1      1.05     112.4       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:29    8598.7      1.05     112.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:29    8604.0      1.04     111.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:30    8608.6      1.04     111.4       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:30    8611.2      1.04     110.9       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][UF]/D
+    0:01:30    8615.5      1.03     110.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:31    8619.5      1.03     110.3       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:31    8620.0      1.03     110.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:31    8621.1      1.03     110.0       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][34]/D
+    0:01:32    8620.8      1.03     109.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:32    8623.7      1.03     109.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:32    8625.8      1.03     109.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:33    8627.4      1.02     109.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:33    8630.4      1.02     109.3       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:33    8634.9      1.02     108.9       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:34    8639.9      1.01     108.3       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][UF]/D
+    0:01:34    8643.1      1.01     108.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:34    8642.9      1.01     108.0       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][UF]/D
+    0:01:35    8643.7      1.01     107.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][OF]/D
+    0:01:35    8647.9      1.00     107.4       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:35    8650.3      1.00     107.3       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:36    8658.0      1.00     106.9       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:36    8659.9      1.00     106.5       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:37    8662.6      0.99     106.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:37    8664.7      0.99     105.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][UF]/D
+    0:01:38    8665.5      0.99     105.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:38    8666.8      0.99     105.5       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][UF]/D
+    0:01:38    8666.8      0.99     105.4       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:39    8671.6      0.98     105.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][UF]/D
+    0:01:39    8672.1      0.98     105.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:39    8675.6      0.98     104.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:41    8676.9      0.98     104.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:44    8679.6      0.97     104.1       0.0                          
+    0:01:46    8628.5      0.97     104.1       0.0                          
+    0:01:46    8629.3      0.97     104.1       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:47    8631.2      0.97     104.1       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:47    8632.2      0.97     103.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:47    8634.4      0.97     103.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:47    8635.2      0.97     103.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:48    8638.1      0.97     103.4       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:49    8639.9      0.97     103.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:49    8644.5      0.96     102.9       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][NX]/D
+    0:01:49    8647.4      0.96     102.9       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:50    8649.8      0.96     102.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:50    8650.9      0.96     102.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:50    8652.2      0.96     102.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:51    8656.4      0.96     102.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:51    8658.6      0.96     102.5       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:51    8659.1      0.96     102.5       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:52    8662.3      0.96     102.0       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:52    8663.6      0.96     101.9       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/out_pipe_status_q_reg[1][NX]/D
+    0:01:52    8665.0      0.95     101.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:52    8664.2      0.95     101.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:53    8669.2      0.95     101.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:53    8672.4      0.95     101.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:01:55    8676.1      0.95     101.6       0.0                          
+    0:01:55    8676.1      0.95     101.6       0.0                          
+    0:01:55    8682.0      0.95     101.4       0.0                          
+    0:01:56    8686.0      0.95     101.2       0.0                          
+    0:01:56    8688.4      0.95     100.9       0.0                          
+    0:01:56    8691.8      0.95     100.8       0.0                          
+    0:01:56    8696.1      0.95     100.8       0.0                          
+    0:01:56    8700.9      0.95     100.4       0.0                          
+    0:01:56    8701.7      0.95     100.4       0.0                          
+    0:01:57    8701.9      0.95     100.4       0.0                          
+    0:01:57    8704.1      0.95     100.4       0.0                          
+    0:01:57    8704.9      0.95     100.2       0.0                          
+    0:01:57    8709.6      0.95     100.0       0.0                          
+    0:01:57    8711.2      0.95      99.9       0.0                          
+    0:01:57    8713.9      0.95      99.8       0.0                          
+    0:01:58    8715.8      0.95      99.7       0.0                          
+    0:01:58    8718.2      0.95      99.7       0.0                          
+    0:01:58    8718.9      0.95      99.5       0.0                          
+    0:01:58    8718.9      0.95      99.2       0.0                          
+    0:01:59    8722.7      0.95      98.9       0.0                          
+    0:01:59    8726.7      0.95      98.7       0.0                          
+    0:01:59    8728.3      0.95      98.0       0.0                          
+    0:01:59    8731.2      0.95      98.0       0.0                          
+    0:01:59    8732.2      0.95      97.9       0.0                          
+    0:02:00    8732.8      0.95      96.9       0.0                          
+    0:02:00    8731.2      0.95      96.8       0.0                          
+    0:02:00    8734.6      0.95      96.8       0.0                          
+    0:02:00    8734.6      0.95      96.8       0.0                          
+    0:02:01    8740.0      0.95      96.6       0.0                          
+    0:02:01    8740.5      0.95      96.4       0.0                          
+    0:02:01    8740.5      0.95      96.4       0.0                          
+    0:02:01    8742.6      0.95      96.3       0.0                          
+    0:02:02    8744.0      0.95      96.2       0.0                          
+    0:02:02    8744.8      0.95      96.2       0.0                          
+    0:02:02    8746.6      0.95      96.1       0.0                          
+    0:02:03    8753.3      0.95      96.1       0.0                          
+    0:02:03    8754.1      0.95      96.0       0.0                          
+    0:02:03    8755.9      0.95      95.9       0.0                          
+    0:02:03    8756.2      0.95      95.8       0.0                          
+    0:02:04    8755.1      0.95      95.7       0.0                          
+    0:02:05    8756.2      0.95      95.7       0.0                          
+    0:02:05    8755.7      0.95      95.6       0.0                          
+    0:02:05    8754.9      0.95      95.3       0.0                          
+    0:02:06    8755.1      0.95      95.2       0.0                          
+    0:02:06    8756.7      0.95      95.2       0.0                          
+    0:02:06    8758.3      0.95      95.1       0.0                          
+    0:02:07    8760.2      0.95      94.8       0.0                          
+    0:02:07    8760.2      0.95      94.8       0.0                          
+    0:02:07    8761.5      0.95      94.7       0.0                          
+    0:02:07    8764.2      0.95      94.7       0.0                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+                                  TOTAL                                      
+   ELAPSED            WORST NEG   SETUP    DESIGN                            
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:02:07    8764.2      0.95      94.7       0.0                          
+    0:02:07    8764.2      0.95      94.7       0.0                          
+    0:02:09    8672.1      0.95      94.8       0.0                          
+    0:02:09    8650.6      0.95      94.8       0.0                          
+    0:02:09    8644.5      0.95      94.8       0.0                          
+    0:02:09    8643.1      0.95      94.8       0.0                          
+    0:02:09    8642.6      0.95      94.8       0.0                          
+    0:02:09    8642.6      0.95      94.8       0.0                          
+    0:02:10    8642.6      0.95      94.8       0.0                          
+    0:02:10    8617.1      0.96      96.0       0.0                          
+    0:02:10    8616.3      0.96      96.0       0.0                          
+    0:02:10    8616.3      0.96      96.0       0.0                          
+    0:02:10    8616.3      0.96      96.0       0.0                          
+    0:02:10    8616.3      0.96      96.0       0.0                          
+    0:02:10    8616.3      0.96      96.0       0.0                          
+    0:02:10    8616.3      0.96      96.0       0.0                          
+    0:02:10    8616.3      0.96      96.0       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:02:11    8617.3      0.94      94.8       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:02:11    8617.6      0.94      94.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:02:11    8617.9      0.94      94.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:02:11    8619.7      0.94      94.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:02:12    8620.8      0.93      94.7       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:02:12    8620.3      0.93      94.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][75]/D
+    0:02:12    8622.1      0.93      94.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][75]/D
+    0:02:13    8622.4      0.92      94.6       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:02:13    8626.4      0.92      94.4       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][53]/D
+    0:02:13    8627.4      0.92      94.4       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][59]/D
+    0:02:13    8632.2      0.91      94.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][53]/D
+    0:02:14    8633.8      0.91      94.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][53]/D
+    0:02:14    8638.4      0.91      94.2       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][71]/D
+    0:02:15    8637.3      0.90      94.1       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][71]/D
+    0:02:15    8635.7      0.90      94.1       0.0                          
+    0:02:16    8622.1      0.90      93.8       0.0                          
+    0:02:16    8611.5      0.90      93.7       0.0                          
+    0:02:16    8608.3      0.90      93.7       0.0                          
+    0:02:16    8600.3      0.90      93.6       0.0                          
+    0:02:17    8594.7      0.90      93.6       0.0                          
+    0:02:17    8595.3      0.90      93.5       0.0                          
+    0:02:17    8596.6      0.90      93.5       0.0                          
+    0:02:18    8596.6      0.90      93.4       0.0                          
+    0:02:18    8597.4      0.90      93.4       0.0                          
+    0:02:18    8598.2      0.90      93.4       0.0                          
+    0:02:18    8599.0      0.90      93.4       0.0                          
+    0:02:19    8599.0      0.90      93.4       0.0                          
+    0:02:19    8598.2      0.90      93.3       0.0                          
+    0:02:19    8598.2      0.90      93.3       0.0                          
+    0:02:19    8598.2      0.90      93.3       0.0                          
+    0:02:19    8598.5      0.90      93.1       0.0                          
+    0:02:20    8603.2      0.90      92.5       0.0                          
+    0:02:20    8605.4      0.90      92.4       0.0                          
+    0:02:20    8606.4      0.90      92.1       0.0                          
+    0:02:20    8608.0      0.90      92.1       0.0                          
+    0:02:20    8610.7      0.90      92.0       0.0                          
+    0:02:21    8611.2      0.90      91.9       0.0                          
+    0:02:21    8611.8      0.90      91.8       0.0                          
+    0:02:21    8612.8      0.90      91.8       0.0                          
+    0:02:21    8615.7      0.90      91.8       0.0                          
+    0:02:22    8616.5      0.90      91.7       0.0                          
+    0:02:22    8617.3      0.90      91.7       0.0                          
+    0:02:22    8616.5      0.90      91.7       0.0                          
+    0:02:23    8616.8      0.90      91.5       0.0                          
+    0:02:23    8615.5      0.90      91.5       0.0                          
+    0:02:23    8617.6      0.90      91.5       0.0                          
+    0:02:24    8617.1      0.90      91.5       0.0                          
+    0:02:24    8617.3      0.90      91.4       0.0                          
+    0:02:24    8616.8      0.90      91.4       0.0                          
+    0:02:24    8617.6      0.90      91.4       0.0                          
+    0:02:25    8617.6      0.90      91.4       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+    0:02:26    8617.6      0.90      91.4       0.0 gen_operation_groups[0].i_opgroup_block/gen_parallel_slices[0].active_format.i_fmt_slice/gen_num_lanes[0].active_lane.lane_instance.i_fma/mid_pipe_sum_q_reg[1][65]/D
+Loading db file '/eda/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+1
+optimize_registers
+  Loading design 'fpnew_top'
+
+  Beginning retiming
+  ------------------
+Information: Updating design information... (UID-85)
+  Retiming fpnew_top (top)
+  Preferred flip-flop is DFFRS_X1 with setup = 0.04
+
+Warning: The following cells only drive
+	asynchronous pins of sequential cells which have no
+	timing constraint. Therefore retiming will not optimize
+	delay through them:
+	U1976 (BUF_X1)
+	U1970 (BUF_X1)
+	U1969 (BUF_X1)
+	U1975 (BUF_X1)
+	U1967 (BUF_X1)
+	U1974 (BUF_X1)
+	U1966 (BUF_X1)
+	U1965 (BUF_X1)
+	U1964 (BUF_X1)
+	U1963 (BUF_X1)
+	U1962 (BUF_X1)
+	U1961 (BUF_X1)
+	U1960 (BUF_X1)
+	U1973 (BUF_X1)
+	U1959 (BUF_X1)
+	U1971 (BUF_X1)
+	U1958 (BUF_X1)
+	U1972 (BUF_X1)
+	U1955 (BUF_X1)
+	U1954 (BUF_X1)
+	U1953 (BUF_X1)
+	U1957 (BUF_X1)
+	U1956 (BUF_X1)
+	U1968 (BUF_X1)
+	U1849 (BUF_X1)
+	U1854 (BUF_X1)
+	U1853 (BUF_X1)
+	U1848 (BUF_X1)
+	U1852 (BUF_X1)
+	U1851 (BUF_X1)
+	U1855 (BUF_X1)
+	U1850 (BUF_X1)
+	U2051 (BUF_X1)
+	U1864 (BUF_X1)
+	U1863 (BUF_X1)
+
+ (RTDC-115)
+
+  Retiming base-clock MY_CLK, rising edge.
+  Beginning minimum period retiming ...
+  ... minimum period retiming done.
+  Beginning minimum area retiming step 1 ...
+  ... minimum area retiming step 1 done.
+  Beginning minimum area retiming step 2 ...
+  5% 10% 15% 20% 25% 30% 35% 40% 45% 50% 55% 60% 65% 70% 75% 80% 85% 90% 95% 100% 
+  ... minimum area retiming step 2 done.
+  Beginning minimum area retiming step 3 ...
+  10% 20% 30% 40% 50% 60% 70% ... 100% 
+  ... minimum area retiming step 3 done.
+  Beginning final register move ...
+  ... final register move done.
+  Lower bound estimate = 1.71
+  Critical path length = 1.71
+  Clock correction = 0.19 (clock-to-Q delay = 0.09, setup = 0.04, uncertainty = 0.07)
+Warning: Design 'fpnew_top' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+
+  Retiming complete
+  -----------------
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+============================================================================
+| Flow Information                                                         |
+----------------------------------------------------------------------------
+| Flow         | Design Compiler                                           |
+============================================================================
+| Design Information                                      | Value          |
+============================================================================
+| Number of Scenarios                                     | 0              |
+| Leaf Cell Count                                         | 7113           |
+| Number of User Hierarchies                              | 9              |
+| Sequential Cell Count                                   | 955            |
+| Macro Count                                             | 0              |
+| Number of Power Domains                                 | 0              |
+| Design with UPF Data                                    | false          |
+============================================================================
+
+Information: There are 322 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Loading db file '/eda/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db'
+Loaded alib file './alib-52/NangateOpenCellLibrary_typical_ecsm_nowlm.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:06   12527.5      0.16      18.7    2095.4                           257311.8281
+    0:00:06   12527.5      0.16      18.7    2095.4                           257311.8281
+
+  Beginning Mapping Optimizations  (Ultra High effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+    0:00:08   12501.5      0.15      17.8    2095.4                           256620.2812
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:08   12501.5      0.15      17.8    2095.4                           256620.2812
+    0:00:09   13151.3      0.15      17.8       0.0                           290997.3125
+    0:00:11   12405.7      0.15      13.0       0.0                           250193.0938
+    0:00:12   12405.7      0.15      13.0       0.0                           250193.0938
+    0:00:12   12401.7      0.13      11.0       0.0                           250054.3125
+    0:00:12   12401.7      0.13      11.0       0.0                           250054.3125
+    0:00:23   12527.0      0.04       2.1       0.0                           255215.6406
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:23   12527.0      0.04       2.1       0.0                           255215.6406
+    0:00:24   12527.0      0.04       2.1       0.0                           255215.6406
+    0:00:24   12527.0      0.04       2.1       0.0                           255215.6406
+    0:00:24   12527.0      0.04       2.1       0.0                           255215.6406
+    0:00:24   12527.0      0.04       2.1       0.0                           255215.6406
+    0:00:25   12495.9      0.04       2.1       0.0                           253825.2188
+    0:00:25   12495.9      0.04       2.1       0.0                           253825.2188
+    0:00:27   12471.4      0.04       1.7       0.0                           252824.2344
+    0:00:27   12471.4      0.04       1.7       0.0                           252824.2344
+    0:00:27   12471.4      0.04       1.7       0.0                           252824.2344
+    0:00:27   12471.4      0.04       1.7       0.0                           252824.2344
+    0:00:29   12475.7      0.04       1.6       0.0                           252984.6406
+    0:00:29   12475.7      0.04       1.6       0.0                           252984.6406
+    0:00:29   12475.7      0.04       1.6       0.0                           252984.6406
+    0:00:29   12475.7      0.04       1.6       0.0                           252984.6406
+    0:00:30   12475.7      0.04       1.6       0.0                           252984.6406
+    0:00:32   12504.9      0.02       0.6       0.0                           253366.6406
+    0:00:34   12523.5      0.00       0.0       0.0                           253782.8750
+    0:00:35   12525.9      0.00       0.0       0.0                           253788.2188
+    0:00:36   12515.3      0.00       0.0       0.0                           253101.4219
+    0:00:36   12515.3      0.00       0.0       0.0                           253101.4219
+    0:00:36   12515.3      0.00       0.0       0.0                           253101.4219
+    0:00:36   12515.3      0.00       0.0       0.0                           253101.4219
+    0:00:36   12515.3      0.00       0.0       0.0                           253101.4219
+    0:00:36   12515.3      0.00       0.0       0.0                           253101.4219
+    0:00:36   12515.3      0.00       0.0       0.0                           253101.4219
+    0:00:36   12515.3      0.00       0.0       0.0                           253101.4219
+    0:00:36   12515.3      0.00       0.0       0.0                           253101.4219
+    0:00:37   12515.3      0.00       0.0       0.0                           253101.4219
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:37   12515.3      0.00       0.0       0.0                           253101.4219
+    0:00:38   12514.8      0.00       0.0       0.0                           253072.7188
+    0:00:47   11996.1      0.00       0.0       0.0                           236423.7031
+    0:00:47   11996.1      0.00       0.0       0.0                           236423.7031
+    0:00:47   11996.1      0.00       0.0       0.0                           236423.7031
+    0:00:47   11996.1      0.00       0.0       0.0                           236423.7031
+    0:00:49   11992.9      0.00       0.0       0.0                           236322.7031
+Loading db file '/eda/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+report_resources > rp_res_ppa.txt
+report_timing > timing_PPA_1_81_ns.txt
+report_area > area_PPA_1_81_ns.txt
+ungroup -all -flatten
+1
+change_names -hierarchy -rules sverilog
+1
+write_sdf ../netlist/fpnew_top.sdf
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/isa12_2022_2023/Desktop/lab2/cvfpu_lite/netlist/fpnew_top.sdf'. (WT-3)
+1
+write -f verilog -hierarchy -output ../netlist/fpnew_top.sv
+Writing verilog file '/home/isa12_2022_2023/Desktop/lab2/cvfpu_lite/netlist/fpnew_top.sv'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+1
+write_sdc ../netlist/fpnew_top.sdc
+1
+quit
+
+Memory usage for this session 241 Mbytes.
+Memory usage for this session including child processes 241 Mbytes.
+CPU usage for this session 236 seconds ( 0.07 hours ).
+Elapsed time for this session 240 seconds ( 0.07 hours ).
+
+Thank you...
